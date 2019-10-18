@@ -3,6 +3,8 @@ const path = require('path');
 
 const app = express();
 
+const todoModel = require('./models/todoModel');
+
 const todoRoutes = require('./routes/todo');
 
 
