@@ -3,7 +3,7 @@ const Sequelize = require('sequelize');
 const sequelize = require('../utils/database');
 
 
-const todoModel = sequelize.define('Todo', {
+const TodoModel = sequelize.define('Todo', {
   id: {
     primaryKey: true,
     autoIncrement: true,
@@ -23,4 +23,4 @@ const todoModel = sequelize.define('Todo', {
 });
 
 
-module.exports = todoModel;
+module.exports = TodoModel;
