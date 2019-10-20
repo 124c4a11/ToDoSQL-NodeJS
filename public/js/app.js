@@ -58,5 +58,10 @@ new Vue({
 
   created () {
     this.$vuetify.theme.dark = true;
+
+    fetch('/api/todo', { method: 'get' })
+      .then((res) => res.json())
+      .then((todos) => this.todos = todos)
+      .catch((err) => console.error(err));
   },
 });
