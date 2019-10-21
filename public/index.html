@@ -31,12 +31,12 @@
                   <v-spacer></v-spacer>
 
                   <v-text-field
-                  clearable
-                  v-model="todoTitle"
-                  id="newTodo"
-                  name="newTodo"
-                  label="Enter task name"
-                  @keyup.enter="addTodo"
+                    clearable
+                    v-model="todoTitle"
+                    id="newTodo"
+                    name="newTodo"
+                    label="Enter task name"
+                    @keyup.enter="addTodo"
                   ></v-text-field>
                 </v-card-text>
 
@@ -52,6 +52,7 @@
                             v-if="!todo.done"
                             v-model="todo.done"
                             color="primary"
+                            @change="completeTodo(todo.id)"
                           ></v-checkbox>
                         </v-list-item-action>
 
