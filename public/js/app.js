@@ -30,7 +30,11 @@ new Vue({
     },
 
     removeTodo(id) {
-      this.todos = this.todos.filter((t) => t.id !== id);
+      fetch(`/api/todo/${id}`, { method: 'delete' })
+        .then(() => {
+          this.todos = this.todos.filter((t) => t.id !== id);
+        })
+        .catch((err) => console.error(err));
     },
 
     completeTodo(id) {

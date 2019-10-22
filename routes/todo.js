@@ -50,7 +50,19 @@ router.put('/:id', async (req, res) => {
 });
 
 
-router.delete('/:id', (req, res) => {});
+router.delete('/:id', async (req, res) => {
+  try {
+    const todo = await TodoModel.findByPk(parseInt(req.params.id));
+
+    await todo.destroy();
+
+    res.status(204).json({});
+  } catch (err) {
+    console.error(err);
+
+    res.status(500).json({ message: 'Server error' });
+  }
+});
 
 
 module.exports = router;
