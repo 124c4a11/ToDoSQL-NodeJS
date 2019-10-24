@@ -1,5 +1,12 @@
+const TodoModel = require('../models/TodoModel');
+
+
 module.exports = {
-  test() {
-    return 'Hello GraphQL!';
+  async getTodos() {
+    try {
+      return await TodoModel.findAll();
+    } catch (err) {
+      console.error(err);
+    }
   }
 };

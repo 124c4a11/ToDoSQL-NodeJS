@@ -71,16 +71,35 @@ new Vue({
         options.second = '2-digit'
       }
 
-      return new Intl.DateTimeFormat('en-En', options).format(new Date(value));
+      return new Intl.DateTimeFormat('en-En', options).format(new Date(+value));
     }
   },
 
   created () {
     this.$vuetify.theme.dark = true;
 
-    fetch('/api/todo', { method: 'get' })
+    const query = `
+      query {
+        getTodos {
+          id
+          title
+          done
+          createdAt
+          updatedAt
+        }
+      }
+    `;
+
+    fetch('/graphql', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({ query })
+    })
       .then((res) => res.json())
-      .then((todos) => this.todos = todos)
+      .then(({ data }) => this.todos = data.getTodos)
       .catch((err) => console.error(err));
   },
 });
