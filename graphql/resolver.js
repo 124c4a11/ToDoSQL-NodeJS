@@ -8,5 +8,16 @@ module.exports = {
     } catch (err) {
       console.error(err);
     }
+  },
+
+  async createTodo({ todo }) {
+    try {
+      return await TodoModel.create({
+        title: todo.title,
+        done: false
+      });
+    } catch (err) {
+      console.error(err);
+    }
   }
 };
