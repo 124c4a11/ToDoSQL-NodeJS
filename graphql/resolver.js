@@ -19,5 +19,19 @@ module.exports = {
     } catch (err) {
       console.error(err);
     }
+  },
+
+  async completeTodo({ id }) {
+    try {
+      const todo = await TodoModel.findByPk(id);
+
+      todo.done = true;
+
+      await todo.save();
+
+      return todo;
+    } catch (err) {
+      console.error(err);
+    }
   }
 };
