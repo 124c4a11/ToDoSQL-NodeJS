@@ -33,5 +33,18 @@ module.exports = {
     } catch (err) {
       console.error(err);
     }
+  },
+
+  async removeTodo({ id }) {
+    try {
+      const todos = await TodoModel.findAll({ where: { id } });
+
+      await todos[0].destroy();
+
+      return true;
+    } catch (err) {
+      console.error(err);
+      return false;
+    }
   }
 };

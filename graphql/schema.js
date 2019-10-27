@@ -22,5 +22,7 @@ module.exports = buildSchema(`
     createTodo(todo: TodoInput!): Todo!
 
     completeTodo(id: ID!): Todo!
+
+    removeTodo(id: ID!): Boolean!
   }
 `);
